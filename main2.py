@@ -21,14 +21,18 @@ def union(conjuntos, conjunto1, conjunto2):
             if conjunto2 in conj:  
                 index2 = i
 
-        new_conjunto = conjuntos[index1] | conjuntos[index2]
+        if index1 == index2:
+            print("Error: No puedes unir elemetos del mismo conjunto.")
+        else:   
+            new_conjunto = conjuntos[index1] | conjuntos[index2]
 
-     
-        for i in sorted([index1, index2], reverse=True):
-            del conjuntos[i]
+        
+            for i in sorted([index1, index2], reverse=True):
+                del conjuntos[i]
 
-        conjuntos.append(new_conjunto)
-        return conjuntos
+            conjuntos.append(new_conjunto)
+            return conjuntos
+
     
 def particiones(numero, maximo=None):
     if maximo is None:
@@ -60,7 +64,7 @@ def main(setinput):
     N = int(lista[0])
 
     M = int(lista[1])
-    
+
     set(setinput, N)
     permutaciones = []
     while contador < M:
